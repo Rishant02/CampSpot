@@ -1,0 +1,51 @@
+<% layout('/layouts/boilerplate') %>
+<div class="row">
+    <h1 class="text-center">New Campground</h1>
+    <div class="col-6 offset-3">
+        <form action="/campgrounds" method="post" novalidate class="form-validation">
+            <div class="mb-2">
+                <label class="form-label" for="title">Title</label>
+                <input class="form-control" type="text" name="campground[title]" id="title" required>
+                <div class="valid-feedback">
+                    looks good!
+                </div>
+            </div>
+            <div class="mb-2">
+                <label class="form-label" for="location">Location</label>
+                <input class="form-control" type="text" name="campground[location]" id="location" required>
+                <div class="valid-feedback">
+                    looks good!
+                </div>
+            </div>
+            <div class="mb-2">
+                <label class="form-label" for="imageUrl">Image Url</label>
+                <input class="form-control" type="text" name="campground[image]" id="imageUrl" required>
+                <div class="valid-feedback">
+                    looks good!
+                </div>
+            </div>
+            <div class="mb-2">
+                <label class='form-label' for="price">Price</label>
+                <div class="input-group mb-3">
+                    <span class="input-group-text" id="basic-addon1">$</span>
+                    <input type="text" class="form-control" placeholder="0.00" aria-label="price" id='price'
+                        name="campground[price]" aria-describedby="basic-addon1" required>
+                    <div class="valid-feedback">
+                        looks good!
+                    </div>
+                </div>
+
+            </div>
+            <div class="mb-2">
+                <label class="form-label" for="floatingTextarea">Description</label>
+                <textarea class="form-control" placeholder="Description" id="floatingTextarea"
+                    name="campground[description]" required></textarea>
+                <div class="valid-feedback">
+                    looks good!
+                </div>
+            </div>
+            <button class="btn btn-success">Add Campground</button>
+        </form>
+        <a class='link-primary mt-2' href="/campgrounds">All Campground</a>
+    </div>
+</div>
