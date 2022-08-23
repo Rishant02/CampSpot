@@ -6,10 +6,11 @@ const methodOverride = require('method-override');
 const session = require('express-session')
 const flash = require('connect-flash')
 const ExpressError = require('./utils/expressError')
+
 const passport = require('passport')
 const localStrategy = require('passport-local')
 const User = require('./models/user');
-// const UserRouter=
+
 const campgroundRouter = require('./routes/campground')
 const reviewRouter = require('./routes/review')
 const userRouter = require('./routes/user')
