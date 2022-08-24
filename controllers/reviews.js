@@ -4,7 +4,8 @@ const User = require('../models/user')
 
 module.exports.addReview = async (req, res, next) => {
     const campground = await Campground.findById(req.params.id);
-    const review = new Review(req.body.review);
+    const { rating, body } = req.body.review;
+    const review = new Review({ rating: parseInt(rating), body: body });
     campground.reviews.push(review)
     review.author = req.user._id;
     await review.save()
