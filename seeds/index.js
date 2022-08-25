@@ -14,7 +14,7 @@ db.once('open', () => {
 const sample = arr => arr[Math.floor(Math.random() * arr.length)]
 const seedDB = async () => {
     await Campground.deleteMany({});
-    for (let i = 0; i < 50; i++) {
+    for (let i = 0; i < 200; i++) {
         const random1000 = Math.floor(Math.random() * 1000)
         const randPrice = Math.floor(Math.random() * 20) + 10
         const desc = sample(descriptors)
@@ -26,8 +26,11 @@ const seedDB = async () => {
             price: randPrice,
             author: '6304dcfd057835185aee7140',
             geometry: {
-                "type" : "Point",
-                "coordinates" : [77.2349953733528,31.92740773302]
+                "type": "Point",
+                "coordinates": [
+                    cities[random1000].longitude,
+                    cities[random1000].latitude
+                ]
             },
             images: [
                 {
