@@ -3,10 +3,10 @@ const map = new mapboxgl.Map({
     container: 'cluster-map',
     // Choose from Mapbox's core styles, or make your own style with Mapbox Studio
     style: 'mapbox://styles/mapbox/light-v10',
-    center: [-103.5917, 40.6699],
+    center: [78.9629, 78.9629],
     zoom: 3
 });
-map.addControl(new mapboxgl.NavigationControl(),'bottom-left');
+map.addControl(new mapboxgl.NavigationControl(), 'bottom-left');
 
 map.on('load', () => {
     // Add a new source from our GeoJSON data and
