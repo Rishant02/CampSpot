@@ -20,8 +20,8 @@ const MongoStore = require('connect-mongo');
 const campgroundRouter = require('./routes/campground')
 const reviewRouter = require('./routes/review')
 const userRouter = require('./routes/user')
-const dbUrl = process.env.DB_URL || 'mongodb://localhost:27017/yele-camp';
-
+const dbUrl = 'mongodb://localhost:27017/yele-camp';
+// const dbUrl = process.env.DB_URL ||
 mongoose.connect(dbUrl, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
@@ -129,7 +129,7 @@ app.use((err, req, res, next) => {
     res.status(statusCode).render('error', { err })
 })
 
-const port = process.env.PORT || 3000
+const port = process.env.PORT || 3000;
 app.listen(port, () => {
     console.log(`Listening on ${port} port`);
 })

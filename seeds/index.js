@@ -34,12 +34,12 @@ const seedDB = async () => {
             },
             images: [
                 {
-                    url: 'https://res.cloudinary.com/dw0gla16o/image/upload/v1661366170/CampSpots/aec7a75oith6fzahy5gd.jpg',
-                    filename: 'CampSpots/aec7a75oith6fzahy5gd',
+                    url: 'https://res.cloudinary.com/dw0gla16o/image/upload/v1661546796/CampSpots/vncggv7etosuflvzjkj5.jpg',
+                    filename: 'CampSpots/vncggv7etosuflvzjkj5',
                 },
                 {
-                    url: 'https://res.cloudinary.com/dw0gla16o/image/upload/v1661366172/CampSpots/zpfpmfqc2597xgdjzdnt.jpg',
-                    filename: 'CampSpots/zpfpmfqc2597xgdjzdnt',
+                    url: 'https://res.cloudinary.com/dw0gla16o/image/upload/v1661545366/CampSpots/jfwzjzyc4pg7rvejzu67.jpg',
+                    filename: 'CampSpots/jfwzjzyc4pg7rvejzu67',
                 }
             ]
         })
