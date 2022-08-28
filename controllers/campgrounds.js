@@ -7,9 +7,45 @@ const ExpressError = require('../utils/expressError')
 const { cloudinary } = require('../cloudinary')
 
 module.exports.index = async (req, res, next) => {
-    const camp = await Campground.find({});
-    res.render('campgrounds/index', { camp });
-}
+    const camps=await Campground.find({});
+    const campgrounds = await Campground.paginate(
+        {},
+        {
+            page: req.query.page || 1,
+            limit: 10,
+            sort: "-_id"
+        }
+    );
+    campgrounds.page = Number(campgrounds.page)
+    let totalPages = campgrounds.totalPages;
+    let currentPage = campgrounds.page;
+    let startPage;
+    let endPage;
+    if (totalPages <= 10) {
+        startPage = 1;
+        endPage = totalPages;
+    } else {
+        if (currentPage <= 6) {
+            startPage = 1;
+            endPage = 10;
+        } else if (currentPage + 4 >= totalPages) {
+            startPage = totalPages - 9;
+            endPage = totalPages
+        } else {
+            startPage = currentPage - 5;
+            endPage = currentPage + 4;
+        }
+    }
+    // const campgrounds = await Campground.find({});
+    res.render('campgrounds/index', {
+        campgrounds,
+        camps,
+        startPage,
+        endPage,
+        currentPage,
+        totalPages
+    });
+};
 
 module.exports.renderNewForm = (req, res) => {
     res.render('campgrounds/new');
@@ -22,7 +58,7 @@ module.exports.createNewCampground = async (req, res, next) => {
     }).send()
     const campground = new Campground(req.body.campground);
     campground.images = req.files.map(f => ({ url: f.path, filename: f.filename }))
-    campground.geometry=geoData.body.features[0].geometry;
+    campground.geometry = geoData.body.features[0].geometry;
     campground.author = req.user._id;
     await campground.save();
     req.flash('success', 'Succesfully created a campground')
